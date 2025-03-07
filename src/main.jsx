@@ -3,7 +3,7 @@ import React from "react";
 import {createRoot} from "react-dom/client";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./index.css";
-import App from "./App";
+import HomePage from "./pages/HomePage";
 import Layout from "./Layout";
 import CheckoutSuccessPage from "./pages/CheckoutSuccessPage";
 import ContactPage from "./pages/ContactPage";
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         children:  [
             {
                 path: "",
-                element: <App />,
+                element: <HomePage />,
             },
             {
                 path: "product/:productId" ,

@@ -14,11 +14,12 @@ export const useProductStore = create((set) => ({
             error: null,
         });
         try {
-            const response = await fetch("https://vs.api.noroff.dev/online-shop");
+            const response = await fetch("https://v2.api.noroff.dev/online-shop");
             if (!response.ok) {
                 throw new Error(`Failed to fetch products: ${response.status}`);
             }
             const data = await response.json();
+            console.log(data);
             set({products: data.data, loading: false});
         } catch (err) {
             set({
@@ -34,13 +35,13 @@ export const useProductStore = create((set) => ({
             error: null
         });
         try {
-            const response = await fetch(`https://vs.api.noroff.dev/online-shop/${productId}`);
+            const response = await fetch(`https://v2.api.noroff.dev/online-shop/${productId}`);
             if (!response.ok) {
                 throw new Error(`Failed to fetch products: ${response.status}`);
             }
             const data = await response.json();
-
-            set({products: data.data, loading:false});
+            console.log(data);
+            set({product: data.data, loading:false});
         } catch (err) {
             set({
                 loading: false,
