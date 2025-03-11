@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 import {useProductStore} from "../../store/productsStore";
 import {Link, useParams} from "react-router-dom";
 import {buttonStyles} from "../../components/ButtonStyle";
+import {AddToCart} from "../../components/AddToCart";
+
 
 
 export default function productPage() {
@@ -45,6 +47,7 @@ export default function productPage() {
                )}
            </div>
 
+            <AddToCart product={product}/>
 
 
 

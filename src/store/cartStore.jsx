@@ -1,5 +1,5 @@
 import {create} from "zustand";
-import {persist} from "zustand/middleware/persist";
+import {persist} from "zustand/middleware";
 
 export const useCartStore = create(
     persist(
@@ -67,3 +67,4 @@ export const useCartStore = create(
         },
     ),
 );
+
