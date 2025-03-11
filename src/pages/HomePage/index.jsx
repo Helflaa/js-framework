@@ -43,10 +43,7 @@ export default function HomePage() {
                             view more
 
                         </Link>
-                        
 
-                        
-                              
 
                     </div>
 

@@ -1,4 +1,4 @@
-import React from "react";
+
 import {create} from "zustand"
 
 export const useProductStore = create((set) => ({
@@ -24,7 +24,7 @@ export const useProductStore = create((set) => ({
         } catch (err) {
             set({
                 loading: false,
-                error: err instanceof Error ? err.message : null,
+                error: err.message,
             });
 
         }
@@ -45,7 +45,7 @@ export const useProductStore = create((set) => ({
         } catch (err) {
             set({
                 loading: false,
-                error: err instanceof Error ? err.message : null,
+                error: err.message,
             })
         }
     }
