@@ -1,7 +1,11 @@
 import {Link} from "react-router-dom";
 import React from "react";
+import {useCartStore} from "../store/cartStore";
 
 export default function Header() {
+    const cart=useCartStore()
+    console.log ("header:",cart.cart.length);
+    const cartItems=cart.cart.length
     return (
         <>
             <header className="bg-blue-400">
@@ -20,6 +24,7 @@ export default function Header() {
                         <li>
                             <Link to="checkout">
                                 Cart
+                                <p>({cartItems})</p>
                             </Link>
                         </li>
                     </ul>

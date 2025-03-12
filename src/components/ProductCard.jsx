@@ -11,7 +11,7 @@ export function ProductCard({product}) {
             {product.discountedPrice !== product.price ? (
                 <div className="text-center">
                     <p className="text-xl font-semibold text-green-600">{product.discountedPrice} kr</p>
-                    <p className="text-red-500 font-bold">Save {product.price - product.discountedPrice} kr</p>
+                    <p className="text-red-500 font-bold">Save {Math.round(((product.price - product.discountedPrice) / product.price) * 100)} %</p>
                 </div>
             ) : (
                 <p className="text-xl font-semibold text-center">Price: {product.price} kr</p>
