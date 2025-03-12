@@ -21,7 +21,7 @@ export function AddToCart({product}) {
     return (
         <div>
             {isInCart ? (
-                <div className="flex items-center gap -2">
+                <div className="flex items-center gap-2">
                     <button
                         onClick={() => itemDecrement(product.id)}
                         className="px-3 py-1 bg-gray-300 text-gray-700 rounded"

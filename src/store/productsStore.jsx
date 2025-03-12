@@ -19,7 +19,6 @@ export const useProductStore = create((set) => ({
                 throw new Error(`Failed to fetch products: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
             set({products: data.data, loading: false});
         } catch (err) {
             set({
@@ -40,7 +39,6 @@ export const useProductStore = create((set) => ({
                 throw new Error(`Failed to fetch products: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
             set({product: data.data, loading:false});
         } catch (err) {
             set({
