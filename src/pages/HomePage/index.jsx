@@ -1,55 +1,47 @@
-import React from "react";
-import {useProductStore} from "../../store/productsStore";
-import {useEffect} from "react";
-import {Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { useProductStore } from "../../store/productsStore";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
-    const {products, loading, error, fetchProducts} = useProductStore();
+    const { products, loading, error, fetchProducts } = useProductStore();
 
-    useEffect(() =>{
+    useEffect(() => {
         fetchProducts();
-    },[fetchProducts]);
+    }, [fetchProducts]);
 
-    if(loading) {
-        return <div>Loading...</div>;
+    if (loading) {
+        return <div className="text-center text-lg font-semibold">Loading...</div>;
     }
-    if (error){
-        return <div>Error: {error.message}</div>;
+    if (error) {
+        return <div className="text-center text-red-500 font-semibold">Error: {error.message}</div>;
     }
 
     return (
-        <>
-            <h1 className="flex justify-center items-center font-bold p-2">Products</h1>
-            <div className="grid gap -4 grid-cols-2">
+        <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+            <h1 className="text-3xl font-bold text-center mb-6">Products</h1>
+            <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
                 {products.map((product) => (
-                    <div key={product.id}>
-                        <h3>{product.title}</h3>
-                        <img src= {product.image.url} alt= {product.title}/>
-                        <p>{product.description}</p>
+                    <div key={product.id} className="border rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300">
+                        <h3 className="font-semibold text-lg text-center mb-2">{product.title}</h3>
+                        <img src={product.image.url} alt={product.title} className="w-full h-48 object-cover rounded-md mb-3" />
+                        <p className="text-gray-600 text-sm mb-2">{product.description}</p>
                         {product.discountedPrice !== product.price ? (
-                            <div>
-                                <p>Price: {product.discountedPrice} kr</p>
-                                <p className="flex justify-center items-center font-bold p-2 text-red-600">
-                                    {product.price - product.discountedPrice}kr discounted
-                                </p>
+                            <div className="text-center">
+                                <p className="text-xl font-semibold text-green-600">{product.discountedPrice} kr</p>
+                                <p className="text-red-500 font-bold">Save {product.price - product.discountedPrice} kr</p>
                             </div>
                         ) : (
-                            <p>Price: {product.price} kr</p>
-                        )
-                        }
-                        <Link to={`/product/${product.id}`}
-                        className="flex justify-center items-center rounded bg-blue-400 text-white"
+                            <p className="text-xl font-semibold text-center">Price: {product.price} kr</p>
+                        )}
+                        <Link
+                            to={`/product/${product.id}`}
+                            className="block mt-4 bg-blue-500 text-white text-center py-2 rounded-lg hover:bg-blue-600 transition duration-300"
                         >
-                            view more
-
+                            View More
                         </Link>
-
-
                     </div>
-
                 ))}
             </div>
-        </>
-    )
-
+        </div>
+    );
 }
