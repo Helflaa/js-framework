@@ -25,7 +25,7 @@ export default function HomePage() {
 
     return (
         <>
-            <div>
+            <div className="flex w-full justify-center m-4">
                 <Search setResults={setSearchResults}/>
             </div>
 
